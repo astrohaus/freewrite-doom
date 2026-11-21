@@ -1,0 +1,15 @@
+diff --git a/doomgeneric/d_main.c b/doomgeneric/d_main.c
+index 9012e5f..d47a0dc 100644
+--- a/doomgeneric/d_main.c
++++ b/doomgeneric/d_main.c
+@@ -196,7 +196,9 @@ void D_Display (void)
+     }
+ 
+     // save the current screen if about to wipe
+-    if (gamestate != wipegamestate)
++    // doomgeneric-web: no melt. It runs in a loop of its own until it's done, which a web page
++    // can't do without freezing, and an e-ink screen wouldn't melt anyway.
++    if (0 && gamestate != wipegamestate)
+ 		{
+ 		wipe = true;
+ 		wipe_StartScreen(0, 0, SCREENWIDTH, SCREENHEIGHT);
